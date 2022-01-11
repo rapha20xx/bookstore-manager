@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Objects;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name= "tb_category")
 public class Category {
@@ -23,6 +22,12 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     private List<Book> books = new ArrayList<>();
+
+    public Category(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
 
     public Long getId() {
         return id;
