@@ -15,12 +15,12 @@ public class CategoryService {
     @Autowired
     CategoryRepository categoryRepository;
 
-    public List<Category> findAll(){
+    public List<Category> findAll() {
         List<Category> list = categoryRepository.findAll();
         return categoryRepository.findAll();
     }
 
-    public Category findbyId( Long id){
+    public Category findbyId(Long id) {
         Optional<Category> obj = categoryRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: " + id + ", Tipo " + Category.class.getName()));
     }
