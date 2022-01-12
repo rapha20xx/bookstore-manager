@@ -5,10 +5,10 @@ import com.raphasantos.BookStoreManager.dtos.CategoryDTO;
 import com.raphasantos.BookStoreManager.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,7 +34,7 @@ public class CategoryResource {
     }
 
     @PostMapping(value = "/{id}")
-    public ResponseEntity<Category> insert(@RequestBody Category obj) {
+    public ResponseEntity<Category> insert(@Valid @RequestBody Category obj) {
         obj = categoryService.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
@@ -42,7 +42,7 @@ public class CategoryResource {
 
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<CategoryDTO> update (@PathVariable Long id, @RequestBody CategoryDTO objDTO){
+    public ResponseEntity<CategoryDTO> update (@Valid @PathVariable Long id, @RequestBody CategoryDTO objDTO){
         Category newObj = categoryService.update(id, objDTO);
         return ResponseEntity.ok().body(new CategoryDTO(newObj));
     }

@@ -1,10 +1,10 @@
 package com.raphasantos.BookStoreManager.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,12 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
+    @NotEmpty(message = "Need to be filled")
+    @Length(min = 4, max = 60, message = "Minimum between 5 to 50 characters needed!")
     public String name;
+
+    @NotEmpty(message = "Need to be filled")
+    @Length(min = 4, max = 60, message = "Minimum between 5 to 50 characters needed!")
     public String description;
 
     @OneToMany(mappedBy = "category")

@@ -2,11 +2,11 @@ package com.raphasantos.BookStoreManager.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 @NoArgsConstructor
@@ -20,7 +20,10 @@ public class Book implements Serializable {
     public Long id;
 
     public String title;
-    public String authorName;
+    private String authorName;
+
+    @NotEmpty(message = "Need to be filled")
+    @Length(min = 5, max = 2000000, message = "Minimum between 5 to 2.000.000 characters needed!")
     public String text;
 
     @JsonIgnore
