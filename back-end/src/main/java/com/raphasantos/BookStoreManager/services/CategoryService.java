@@ -1,6 +1,7 @@
 package com.raphasantos.BookStoreManager.services;
 
 import com.raphasantos.BookStoreManager.domain.Category;
+import com.raphasantos.BookStoreManager.dtos.CategoryDTO;
 import com.raphasantos.BookStoreManager.repositories.CategoryRepository;
 import com.raphasantos.BookStoreManager.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,21 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    public Category findbyId(Long id) {
+    public Category findById(Long id) {
         Optional<Category> obj = categoryRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: " + id + ", Tipo " + Category.class.getName()));
     }
 
     public Category insert(Category obj){
         obj.setId(null);
+        return categoryRepository.save(obj);
+    }
+
+
+    public Category update(Long id, CategoryDTO objDTO) {
+        Category obj = findById(id);
+        obj.setName(objDTO.getName());
+        obj.setDescription(objDTO.getDescription());
         return categoryRepository.save(obj);
     }
 }
