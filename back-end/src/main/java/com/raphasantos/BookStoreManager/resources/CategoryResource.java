@@ -5,6 +5,7 @@ import com.raphasantos.BookStoreManager.dtos.CategoryDTO;
 import com.raphasantos.BookStoreManager.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -44,5 +45,11 @@ public class CategoryResource {
     public ResponseEntity<CategoryDTO> update (@PathVariable Long id, @RequestBody CategoryDTO objDTO){
         Category newObj = categoryService.update(id, objDTO);
         return ResponseEntity.ok().body(new CategoryDTO(newObj));
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        categoryService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
