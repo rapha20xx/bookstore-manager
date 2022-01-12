@@ -3,6 +3,7 @@ package com.raphasantos.BookStoreManager.services;
 import com.raphasantos.BookStoreManager.domain.Category;
 import com.raphasantos.BookStoreManager.dtos.CategoryDTO;
 import com.raphasantos.BookStoreManager.repositories.CategoryRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import com.raphasantos.BookStoreManager.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class CategoryService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: " + id + ", Tipo " + Category.class.getName()));
     }
 
-    public Category insert(Category obj){
+    public Category insert(Category obj) {
         obj.setId(null);
         return categoryRepository.save(obj);
     }
@@ -39,8 +40,13 @@ public class CategoryService {
         return categoryRepository.save(obj);
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         findById(id);
-        categoryRepository.deleteById(id);
+        try {
+            categoryRepository.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new com.raphasantos.BookStoreManager.services.exceptions.DataIntegrityViolationException("Category can not be deleted! There are books associated");
+        }
+
     }
 }
