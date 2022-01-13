@@ -17,6 +17,7 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button'; 
 import { CategoryReadComponent } from './components/views/category/category-read/category-read.component';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { CategoryReadComponent } from './components/views/category/category-read
     MatIconModule,
     MatCardModule,
     MatTableModule,
+    MatButtonModule,
     HttpClientModule
   ],
   providers: [],
