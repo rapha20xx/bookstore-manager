@@ -17,8 +17,14 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
-import {MatButtonModule} from '@angular/material/button'; 
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CategoryReadComponent } from './components/views/category/category-read/category-read.component';
+import { CategoryCreateComponent } from './components/views/category/category-create/category-create.component';
+import { CategoryDeleteComponent } from './components/views/category/category-delete/category-delete.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +34,8 @@ import { CategoryReadComponent } from './components/views/category/category-read
     NavComponent,
     HomeComponent,
     CategoryReadComponent,
+    CategoryCreateComponent,
+    CategoryDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +48,11 @@ import { CategoryReadComponent } from './components/views/category/category-read
     MatCardModule,
     MatTableModule,
     MatButtonModule,
-    HttpClientModule
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

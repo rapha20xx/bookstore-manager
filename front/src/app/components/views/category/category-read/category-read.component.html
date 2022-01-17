@@ -4,10 +4,11 @@
         <h1>Category</h1>
     </div>
 
-    <button class="button mat-elevation-z8" mat-stroked-button color="primary">New Category<span class="plus-button">+</span> </button>
+    <button class="button mat-elevation-z8" (click)="NavToCategoryCreate()" mat-stroked-button color="primary">New
+        Category<span class="plus-button">+</span> </button>
 
     <div class=" mat-elevation-z8 content-table">
-        <table class="table" mat-table [dataSource] = "categories">
+        <table class="table" mat-table [dataSource]="categories">
 
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -40,7 +41,7 @@
                     <a class="edit" href="#">
                         <i class="material-icons">edit</i>
                     </a>
-                    <a class="delete" href="#">
+                    <a class="delete" routerLink="delete/{{row.id}}">
                         <i class="material-icons">delete</i>
                     </a>
                 </td>

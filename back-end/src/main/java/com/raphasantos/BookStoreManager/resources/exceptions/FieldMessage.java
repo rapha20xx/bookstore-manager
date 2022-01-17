@@ -10,6 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FieldMessage {
-    private String firldNAme;
+    private String fieldNAme;
     private String message;
 }

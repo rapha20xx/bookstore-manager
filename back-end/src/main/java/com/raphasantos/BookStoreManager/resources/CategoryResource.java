@@ -13,9 +13,10 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin("*")
+
 @RestController
-@RequestMapping(value = "categories")
+@RequestMapping(value = "/categories")
+@CrossOrigin(origins = "*")
 public class CategoryResource {
 
     @Autowired
@@ -34,9 +35,9 @@ public class CategoryResource {
         return ResponseEntity.ok().body(obj);
     }
 
-    @PostMapping(value = "/{id}")
-    public ResponseEntity<Category> insert(@Valid @RequestBody Category obj) {
-        obj = categoryService.insert(obj);
+    @PostMapping
+    public ResponseEntity<Category> create(@Valid @RequestBody Category obj) {
+        obj = categoryService.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }

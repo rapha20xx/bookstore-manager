@@ -19,15 +19,25 @@ export class CategoryService {
     return this.http.get<Category[]>(url)
   }
 
-  create(category: Category): Observable<Category>{
+  findById(id: String): Observable<Category> {
+    const url = `${this.baseUrl}/categories/${id}`
+    return this.http.get<Category>(url)
+  }
+
+  create(category: Category): Observable<Category> {
     const url = `${this.baseUrl}/categories`
     return this.http.post<Category>(url, category);
   }
 
-  message (str: String): void{
-    this._snack.open(`${str}`, 'OK',{
+  delete(id: String): Observable<void> {
+    const url = `${this.baseUrl}/categories/${id}`
+    return this.http.delete<void>(url)
+  }
+
+  message(str: String): void {
+    this._snack.open(`${str}`, 'OK', {
       horizontalPosition: 'end',
-      verticalPosition:'top',
+      verticalPosition: 'top',
       duration: 3000
     })
   }

@@ -4,9 +4,7 @@ import com.raphasantos.BookStoreManager.domain.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -15,15 +13,15 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class CategoryDTO implements Serializable {
-    public Long id;
+    private Long id;
 
-    @NotEmpty(message = "Need to be filled")
-    @Length(min = 6, max = 51, message = "Minimum between 5 to 50 characters needed!")
-    public String name;
+    @NotNull(message = "Name need to be filled")
+    @Size(min = 3, max = 30, message = "Minimum between 3 to 30 characters needed!")
+    private String name;
 
-    @NotEmpty(message = "Need to be filled")
-    @Length(min = 6, max = 51, message = "Minimum between 5 to 50 characters needed!")
-    public String description;
+    @NotNull(message = "Need to be filled")
+    @Size(min = 5, max = 50, message = "Minimum between 5 to 50 characters needed!")
+    private String description;
 
     public CategoryDTO(Category obj) {
         id = obj.getId();

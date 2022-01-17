@@ -19,13 +19,13 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @NotEmpty(message = "Need to be filled")
-    @Length(min = 4, max = 60, message = "Minimum between 5 to 50 characters needed!")
-    public String name;
+    @NotEmpty(message = "Name need to be filled")
+    @Length(min = 3, max = 30, message = "Minimum between 3 to 30 characters needed!")
+    private String name;
 
-    @NotEmpty(message = "Need to be filled")
-    @Length(min = 4, max = 60, message = "Minimum between 5 to 50 characters needed!")
-    public String description;
+    @NotEmpty(message = "Description need to be filled")
+    @Length(min = 5, max = 50, message = "Minimum between 5 to 50 characters needed!")
+    private String description;
 
     @OneToMany(mappedBy = "category")
     private List<Book> books = new ArrayList<>();
