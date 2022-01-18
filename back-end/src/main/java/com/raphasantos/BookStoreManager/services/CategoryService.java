@@ -3,9 +3,9 @@ package com.raphasantos.BookStoreManager.services;
 import com.raphasantos.BookStoreManager.domain.Category;
 import com.raphasantos.BookStoreManager.dtos.CategoryDTO;
 import com.raphasantos.BookStoreManager.repositories.CategoryRepository;
-import org.springframework.dao.DataIntegrityViolationException;
 import com.raphasantos.BookStoreManager.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

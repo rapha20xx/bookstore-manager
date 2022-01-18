@@ -5,6 +5,7 @@ import { CategoryDeleteComponent } from './components/views/category/category-de
 import { CategoryReadComponent } from './components/views/category/category-read/category-read.component';
 import { HomeComponent } from './components/views/home/home.component';
 import { CategoryUpdateComponent } from './components/views/category/category-update/category-update.component';
+import { BookReadComponent } from './components/views/book/book-read/book-read.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'categories/update/:id',
     component: CategoryUpdateComponent
+  },
+
+  {
+    path: 'categories/:id_cat/books',
+    component: BookReadComponent
   }
 ];
 

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "books")
+@RequestMapping(value = "/books")
 @CrossOrigin("*")
 public class BookResource {
 
@@ -22,8 +22,8 @@ public class BookResource {
     BookService bookService;
 
     @GetMapping
-    public ResponseEntity<List<BookDTO>> findAll() {
-        List<Book> list = bookService.findAll();
+    public ResponseEntity<List<BookDTO>> findAll(@RequestParam(value = "category", defaultValue = "0")Long id_cat) {
+        List<Book> list = bookService.findAll(id_cat);
         List<BookDTO> listDTO = list.stream().map(obj -> new BookDTO(obj)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
     }

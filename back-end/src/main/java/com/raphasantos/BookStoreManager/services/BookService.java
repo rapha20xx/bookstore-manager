@@ -17,9 +17,12 @@ public class BookService {
     @Autowired
     BookRepository bookRepository;
 
-    public List<Book> findAll() {
-        List<Book> list = bookRepository.findAll();
-        return bookRepository.findAll();
+    @Autowired
+    CategoryService categoryService;
+
+    public List<Book> findAll(Long id_cat) {
+        categoryService.findById(id_cat);
+        return bookRepository.findAllbyCategory(id_cat);
     }
 
     public Book findById(Long id) {
