@@ -47,6 +47,11 @@ export class BookCreateComponent implements OnInit {
       }
     );
   }
+
+  cancel(): void {
+    this.router.navigate([`categories/${this.id_cat}/books`]);
+  }
+
   getMessage() {
     if (this.title.invalid) {
       return "Title must have minimium 3 and max 100 characters";
