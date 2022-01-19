@@ -22,7 +22,7 @@ public class BookResource {
     BookService bookService;
 
     @GetMapping
-    public ResponseEntity<List<BookDTO>> findAll(@RequestParam(value = "category", defaultValue = "0")Long id_cat) {
+    public ResponseEntity<List<BookDTO>> findAll(@RequestParam(value = "category", defaultValue = "0") Long id_cat) {
         List<Book> list = bookService.findAll(id_cat);
         List<BookDTO> listDTO = list.stream().map(obj -> new BookDTO(obj)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDTO);
@@ -34,16 +34,16 @@ public class BookResource {
         return ResponseEntity.ok().body(obj);
     }
 
-    @PostMapping(value = "/{id}")
-    public ResponseEntity<Book> insert(@Valid @RequestBody Book obj) {
-        obj = bookService.insert(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+    @PostMapping
+    public ResponseEntity<Book> insert(@RequestParam(value = "category", defaultValue = "0") Long id_cat, @RequestBody Book obj) {
+        Book newObj = bookService.insert(id_cat, obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/books/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<BookDTO> update(@PathVariable Long id,@Valid @RequestBody BookDTO objDTO) {
+    public ResponseEntity<BookDTO> update(@PathVariable Long id, @Valid @RequestBody BookDTO objDTO) {
         Book newObj = bookService.update(id, objDTO);
         return ResponseEntity.ok().body(new BookDTO(newObj));
     }

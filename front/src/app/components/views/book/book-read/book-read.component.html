@@ -1,15 +1,14 @@
 <div class="content">
-
     <div class="title">
         <h1>Category</h1>
     </div>
 
-    <button class="button mat-elevation-z8" mat-stroked-button color="primary">New
-        Book<span class="plus-button">+</span> </button>
+    <button class="button mat-elevation-z8" (click)="navToCreateBook()" mat-stroked-button color="primary">
+        New Book<span class="plus-button">+</span>
+    </button>
 
-    <div class=" mat-elevation-z8 content-table">
+    <div class="mat-elevation-z8 content-table">
         <table class="table" mat-table [dataSource]="books">
-
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef>ID</th>
                 <td mat-cell *matCellDef="let row">{{ row.id }}</td>
@@ -36,7 +35,7 @@
                     <a class="edit">
                         <i class="material-icons">edit</i>
                     </a>
-                    <a class="delete" routerLink="delete/{{row.id}}">
+                    <a class="delete" routerLink="delete/{{ row.id }}">
                         <i class="material-icons">delete</i>
                     </a>
                 </td>

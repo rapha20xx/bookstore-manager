@@ -23,7 +23,7 @@ public class Book implements Serializable {
     private String authorName;
 
     @NotEmpty(message = "Need to be filled")
-    @Length(min = 5, max = 2000000, message = "Minimum between 5 to 2.000.000 characters needed!")
+    @Length(min = 3, max = 2000000, message = "Minimum between 5 to 2.000.000 characters needed!")
     public String text;
 
     @JsonIgnore

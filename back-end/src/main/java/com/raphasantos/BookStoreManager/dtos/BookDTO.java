@@ -13,7 +13,7 @@ public class BookDTO {
     private Long id;
 
     @NotEmpty(message = "Need to be filled")
-    @Length(min = 5, max = 2000001, message = "Minimum between 5 to 2.000.000 characters needed!")
+    @Length(min = 3, max = 2000001, message = "Minimum between 5 to 2.000.000 characters needed!")
     private String title;
 
     public BookDTO(Book obj) {

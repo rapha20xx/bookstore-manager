@@ -19,7 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CategoryReadComponent } from './components/views/category/category-read/category-read.component';
@@ -27,6 +27,7 @@ import { CategoryCreateComponent } from './components/views/category/category-cr
 import { CategoryDeleteComponent } from './components/views/category/category-delete/category-delete.component';
 import { CategoryUpdateComponent } from './components/views/category/category-update/category-update.component';
 import { BookReadComponent } from './components/views/book/book-read/book-read.component';
+import { BookCreateComponent } from './components/views/book/book-create/book-create.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { BookReadComponent } from './components/views/book/book-read/book-read.c
     CategoryCreateComponent,
     CategoryDeleteComponent,
     CategoryUpdateComponent,
-    BookReadComponent
+    BookReadComponent,
+    BookCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,7 @@ import { BookReadComponent } from './components/views/book/book-read/book-read.c
     MatTableModule,
     MatButtonModule,
     FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,

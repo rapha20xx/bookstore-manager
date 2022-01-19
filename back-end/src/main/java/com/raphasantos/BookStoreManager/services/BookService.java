@@ -1,6 +1,7 @@
 package com.raphasantos.BookStoreManager.services;
 
 import com.raphasantos.BookStoreManager.domain.Book;
+import com.raphasantos.BookStoreManager.domain.Category;
 import com.raphasantos.BookStoreManager.dtos.BookDTO;
 import com.raphasantos.BookStoreManager.repositories.BookRepository;
 import com.raphasantos.BookStoreManager.services.exceptions.ObjectNotFoundException;
@@ -30,8 +31,10 @@ public class BookService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found! Id: " + id + ", Tipo " + Book.class.getName()));
     }
 
-    public Book insert(Book obj) {
+    public Book insert(Long id_cat, Book obj) {
         obj.setId(null);
+        Category cat = categoryService.findById(id_cat);
+        obj.setCategory(cat);
         return bookRepository.save(obj);
     }
 

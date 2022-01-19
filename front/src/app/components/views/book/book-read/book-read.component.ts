@@ -1,5 +1,7 @@
+/** @format */
+
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Book } from "../book.model";
 import { BookService } from "../book.service";
 
@@ -9,18 +11,21 @@ import { BookService } from "../book.service";
   styleUrls: ["./book-read.component.css"],
 })
 export class BookReadComponent implements OnInit {
-
   displayedColumns: string[] = ["id", "title", "books", "actions"];
 
   id_cat: String = "";
 
   books: Book[] = [];
 
-  constructor(private service: BookService, private route: ActivatedRoute) {}
+  constructor(
+    private service: BookService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.id_cat = this.route.snapshot.paramMap.get('id_cat')!;
-    this.findAll()
+    this.id_cat = this.route.snapshot.paramMap.get("id_cat")!;
+    this.findAll();
   }
 
   findAll() {
@@ -28,5 +33,8 @@ export class BookReadComponent implements OnInit {
       this.books = resp;
       console.log(this.books);
     });
+  }
+  navToCreateBook(): void {
+    this.router.navigate([`categories/${this.id_cat}/books/create`]);
   }
 }
